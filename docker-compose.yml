@@ -44,7 +44,19 @@ services:
       - elasticsearch
     networks:
       - elk-network
+  mysql:
+    image: mysql
+    container_name: mysql-db
+    restart: always
+    environment:
+      - MYSQL_DATABASE=customer-service-db
+      - MYSQL_ROOT_PASSWORD=Junk@2104
+    ports:
+      - '3306:3306'
+    networks:
+      - elk-network
 
+    
 networks:
   elk-network:
     driver: bridge
